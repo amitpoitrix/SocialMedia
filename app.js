@@ -3,6 +3,9 @@ import mongoose from 'mongoose';
 
 const app = express();
 
+// to parse the incoming payload using express json() parser
+app.use(express.json());
+
 app.use("/health", (req, res, next) => {
     console.log("Incoming v1/health");
     res.status(200).json({message: "social media service is up and running"});
