@@ -14,7 +14,7 @@ export const getAllUser = async(req, res, next) => {
         return res.status(404).json({message: "users not found"});
     }
 
-    return res.status(200).json(users);
+    return res.status(200).json({users});
 }
 
 /** Registering new users */
@@ -37,7 +37,8 @@ export const signUp = async (req, res, next) => {
     const userInfo = new User({
         name,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        blogs: []
     });
 
     try {
@@ -49,6 +50,7 @@ export const signUp = async (req, res, next) => {
     return res.status(201).json({message: "Successfully registered new user", userInfo});
 }
 
+/** Signin users */
 export const signIn = async (req, res, next) => {
     const {email, password} = req.body;
 

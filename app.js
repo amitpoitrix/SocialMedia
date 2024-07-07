@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routes/user.routes.js'
+import blogRouter from './routes/blog.routes.js';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use("/health", (req, res, next) => {
 });
 
 app.use("/v1/user", userRouter);
+app.use("/v1/blog", blogRouter);
 
 mongoose
     .connect(process.env.DB_CONNECT)
